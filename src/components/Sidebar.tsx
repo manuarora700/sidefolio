@@ -18,6 +18,7 @@ export const Sidebar = () => {
     const width = window.innerWidth;
     return width <= 1024;
   };
+  console.log("isMobile", isMobile());
   const [open, setOpen] = useState(isMobile() ? false : true);
 
   return (
@@ -25,7 +26,7 @@ export const Sidebar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ x: isMobile() ? -200 : 0 }}
+            initial={{ x: -200 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
@@ -40,7 +41,7 @@ export const Sidebar = () => {
         )}
       </AnimatePresence>
       <button
-        className="fixed lg:hidden bottom-4 right-4 h-5 w-5 rounded-full backdrop-blur-sm flex items-center justify-center"
+        className="fixed lg:hidden bottom-4 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center"
         onClick={() => setOpen(!open)}
       >
         <IconLayoutSidebarRightCollapse className="h-4 w-4 text-secondary" />

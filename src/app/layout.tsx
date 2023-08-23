@@ -22,7 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={twMerge(inter.className, "flex antialiased")}>
+      <body
+        className={twMerge(
+          inter.className,
+          "flex antialiased h-screen overflow-hidden"
+        )}
+      >
         <Sidebar />
         <div className="flex-1 bg-white min-h-screen overflow-y-auto">
           {children}
