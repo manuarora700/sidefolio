@@ -27,7 +27,7 @@ export const Products = () => {
               alt="thumbnail"
               height="200"
               width="200"
-              className="rounded-md group-hover:shadow-xl transition duration-200"
+              className="rounded-md"
             />
             <div className="flex flex-col justify-between">
               <div>
