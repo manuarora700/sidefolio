@@ -18,7 +18,6 @@ export const Sidebar = () => {
     const width = window.innerWidth;
     return width <= 1024;
   };
-  console.log("isMobile", isMobile());
   const [open, setOpen] = useState(isMobile() ? false : true);
 
   return (

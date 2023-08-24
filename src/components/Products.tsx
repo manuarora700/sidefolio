@@ -9,12 +9,6 @@ import { Paragraph } from "./Paragraph";
 export const Products = () => {
   return (
     <div>
-      <Heading
-        as="h2"
-        className="font-black text-lg md:text-lg lg:text-lg mt-20 mb-4"
-      >
-        What I&apos;ve been working on
-      </Heading>
       <div className="grid grid-cols-1  gap-10">
         {products.map((product: Product, idx: number) => (
           <Link
