@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Sidebar />
         <div className="flex-1 bg-white min-h-screen overflow-y-auto">
           {children}
+          <Footer />
         </div>
       </body>
     </html>
