@@ -29,11 +29,11 @@ export const Sidebar = () => {
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
-            className="px-6 py-10 bg-neutral-100 lg:w-[14%] border-r border-neutral-200/[0.8] fixed lg:relative  h-screen left-0 lg:flex flex-col justify-between max-w-[14rem]"
+            className="px-6  z-[100] py-10 bg-neutral-100 lg:w-[14%] border-r border-neutral-200/[0.8] fixed lg:relative  h-screen left-0 lg:flex flex-col justify-between max-w-[14rem]"
           >
             <div className="">
               <SidebarHeader />
-              <Navigation />
+              <Navigation setOpen={setOpen} />
             </div>
             <Badge href="/resume" text="Read Resume" />
           </motion.div>
@@ -49,17 +49,22 @@ export const Sidebar = () => {
   );
 };
 
-export const Navigation = () => {
+export const Navigation = ({
+  setOpen,
+}: {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const pathname = usePathname();
 
   const isActive = (href: string) => pathname === href;
 
   return (
-    <div className="flex flex-col space-y-1 my-10">
+    <div className="flex flex-col space-y-1 my-10 relative z-[100]">
       {navlinks.map((link: Navlink) => (
         <Link
           key={link.href}
           href={link.href}
+          onClick={() => setOpen(false)}
           className={twMerge(
             "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
             isActive(link.href) && "bg-white shadow-lg text-primary"
