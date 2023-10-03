@@ -12,12 +12,13 @@ import { Badge } from "./Badge";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
 
+const isMobile = () => {
+  if (typeof window === "undefined") return false;
+  const width = window.innerWidth;
+  return width <= 1024;
+};
+
 export const Sidebar = () => {
-  const isMobile = () => {
-    if (typeof window === "undefined") return false;
-    const width = window.innerWidth;
-    return width <= 1024;
-  };
   const [open, setOpen] = useState(isMobile() ? false : true);
 
   return (
@@ -64,7 +65,7 @@ export const Navigation = ({
         <Link
           key={link.href}
           href={link.href}
-          onClick={() => setOpen(false)}
+          onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
             "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
             isActive(link.href) && "bg-white shadow-lg text-primary"

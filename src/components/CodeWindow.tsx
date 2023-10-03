@@ -31,7 +31,6 @@ export const CodeWindow = ({ title, children }: any) => {
           setTimeout(() => {
             setButtonText("Copy");
           }, 1000);
-          console.log("Text copied to clipboard:", textToCopy);
         })
         .catch((err) => {
           console.error("Error copying text to clipboard:", err);

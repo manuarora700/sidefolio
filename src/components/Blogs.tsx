@@ -8,7 +8,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
 export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
-  console.log("blog", blogs);
   const [hovered, setHovered] = useState<string | null>(null);
   return (
     <div className="max-w-5xl mx-auto my-10">
