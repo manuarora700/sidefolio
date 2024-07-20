@@ -11,12 +11,7 @@ import { socials } from "@/constants/socials";
 import { Badge } from "./Badge";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
-
-const isMobile = () => {
-  if (typeof window === "undefined") return false;
-  const width = window.innerWidth;
-  return width <= 1024;
-};
+import { isMobile } from "@/lib/utils";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? false : true);
@@ -32,16 +27,18 @@ export const Sidebar = () => {
             exit={{ x: -200 }}
             className="px-6  z-[100] py-10 bg-neutral-100 max-w-[14rem] lg:w-fit  fixed lg:relative  h-screen left-0 flex flex-col justify-between"
           >
-            <div className="">
+            <div className="flex-1 overflow-auto">
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
-            <Badge href="/resume" text="Read Resume" />
+            <div onClick={() => isMobile() && setOpen(false)}>
+              <Badge href="/resume" text="Read Resume" />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
       <button
-        className="fixed lg:hidden bottom-4 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-10"
+        className="fixed lg:hidden bottom-4 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-50"
         onClick={() => setOpen(!open)}
       >
         <IconLayoutSidebarRightCollapse className="h-4 w-4 text-secondary" />
