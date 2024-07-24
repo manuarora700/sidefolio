@@ -1,6 +1,6 @@
 "use client";
 import { Product } from "@/types/products";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import { Heading } from "./Heading";
 import { Paragraph } from "./Paragraph";
@@ -8,7 +8,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export const SingleProduct = ({ product }: { product: Product }) => {
-  const [activeImage, setActiveImage] = useState(product.thumbnail);
+  const [activeImage, setActiveImage] = useState<StaticImageData | string>(
+    product.thumbnail
+  );
   return (
     <div className="py-10">
       <motion.div
@@ -23,7 +25,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
         transition={{
           duration: 0.5,
         }}
-        key={activeImage}
+        key={product.slug}
         className="relative"
       >
         <Image
