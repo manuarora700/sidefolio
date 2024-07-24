@@ -1,8 +1,10 @@
+import { StaticImageData } from "next/image";
+
 export type Product = {
   title: string;
   description: string;
   thumbnail: string;
-  images: string[];
+  images: StaticImageData;
   href: string;
   slug?: string;
   stack?: string[];
